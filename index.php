@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +16,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/15b684dcde.js" crossorigin="anonymous"></script>
 
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -23,13 +28,27 @@
 </head>
 
 <body>
-  <a href="../kiyomi_portfolio/php/views/logout.php" class="btn btn-dark rounded-pill float-right px-4 mr-4 mt-5 text-white font-weight-bold">Log Out</a>
-  <a href="../kiyomi_portfolio/php/views/login.php" class="btn btn-danger rounded-pill float-right px-4 mr-4 mt-5 text-white font-weight-bold">Log in</a><br>
+  <?php
+    if(!empty($_SESSION)){
+  ?>
+  <a href="../kiyomi_portfolio/php/views/logout.php" class="btn btn-dark rounded-pill float-right px-4 m-4 text-white font-weight-bold">Log Out<i class="fas fa-sign-out-alt fa-lg ml-2"></i></a><br>
+  <?php
+    }else{
+  ?>
+  <a href="../kiyomi_portfolio/php/views/login.php" class="btn btn-danger rounded-pill float-right px-4 m-4 text-white font-weight-bold ">Log in<i class="fas fa-sign-in-alt fa-lg ml-2"></i></a><br>
+  <?php } ?>
 
   <h1 class="site-heading text-center text-white d-none d-lg-block">
     <span class="site-heading-upper text-primary mb-3">One person, One cup, at a time</span>
     <span class="site-heading-lower">Kiyomi Cafe</span>
   </h1>
+
+  <?php 
+    if(!empty($_SESSION)){
+  
+      echo "<h3 class='text-white m-3 text-center font-italic'>Welcome, " .$_SESSION['username'] . "</h3>";
+    }
+  ?>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
@@ -41,18 +60,18 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item active px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+            <a class="nav-link text-uppercase text-expanded" href="../kiyomi_portfolio/index.php">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="about.html">About</a>
+            <a class="nav-link text-uppercase text-expanded" href="../kiyomi_portfolio/about.php">About</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="products.html">Online Shop</a>
+            <a class="nav-link text-uppercase text-expanded" href="../kiyomi_portfolio/products.php">Online Shop</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
+            <a class="nav-link text-uppercase text-expanded" href="../kiyomi_portfolio/store.php">Store</a>
           </li>
         </ul>
       </div>
@@ -71,7 +90,7 @@
           <p class="mb-3">Every cup of our quality artisan coffee starts with locally sourced, hand picked ingredients. Once you try it, our coffee will be a blissful addition to your everyday morning routine - we guarantee it!
           </p>
           <div class="intro-button mx-auto">
-            <a class="btn btn-primary btn-xl" href="#">Visit Us Today!</a>
+            <a class="btn btn-primary btn-xl" href="../kiyomi_portfolio/php/views/cafeMenu.php">Cafe Menu</a>
           </div>
         </div>
       </div>

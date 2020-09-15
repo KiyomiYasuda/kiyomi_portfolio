@@ -47,18 +47,42 @@ if(isset($_POST['btnBuy'])){
       header("Location: ../views/onlineShop.php");
     }
   }elseif($buy_quantity >$item_quantity){
-    echo "You cannot buy this item.";
+    echo "<div class='alert alert-danger alert-dismissible fade show text-center' role='alert'>
+    <strong>You cannot buy the item.</strong> You should check your quantity.
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>&times;</span>
+    </button>
+  </div>";
   }
+
 
 }
 
 if(isset($_POST['update'])){
+  $item_id = $_POST['item_id'];
   $up_name = $_POST['up_name'];
   $up_price = $_POST['up_price'];
   $up_size = $_POST['up_size'];
   $up_quantity = $_POST['up_quantity'];
+
+  $up_img = $_FILES['up_img']['name'];
+
+  $target_dir = "../uploads/";
+
+  $target_file = $target_gir . basename($_FILES['up_img']['name']);
+
+  $result = $item->updateItem($item_id, $up_name, $up_price, $up_size, $up_quantity, $up_img);
   
+  if($result == 1){
+    move_uploaded_file($_FILES['up_img']['tmp_name'],$target_file);
+    
+    header("Location: ../views/onlineShop.php");
+  }else{
+    echo "Error in uploading the picture";
+  }
+
 }
+
 
 
 

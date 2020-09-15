@@ -29,7 +29,7 @@
 <body style="background-color: #E6A756E6;">
   <div class="container">
     <div class="card mx-auto w-50 my-5 px-4 border-0">
-      <form action="../action/actionItem.php" method="POST" enctype="multipart/form-data">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="card-header border-0 text-center">
           <img src="../uploads/<?php echo $item_detail['item_img'] ?>" style="height: 200px;">
         </div>
@@ -63,9 +63,10 @@
 
           <div class="form-row">
             <input type="submit" name="btnBuy" value="BUY" class="btn btn-danger form-control my-3">
-
-
             <!-- <a href="confirmData.php?item_id=<?php //echo $item_detail['item_id'] ?>" class="btn btn-danger form-control my-3">BUY</a>  -->
+          </div>
+          <div class="form-row">
+            
           </div>
         </div>
       </form>

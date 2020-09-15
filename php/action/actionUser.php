@@ -36,7 +36,7 @@ if(isset($_POST['register'])){
     $_SESSION['email'] = $login['email'];
     $_SESSION['address'] = $login['address'];
 
-    header("Location: ../../index.html");
+    header("Location: ../../index.php");
 
   }else{
     echo "Incorrect Username and Password";

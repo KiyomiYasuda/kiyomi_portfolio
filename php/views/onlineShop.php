@@ -1,5 +1,9 @@
 <?php
   include '../action/actionItem.php';
+
+  if(empty($_SESSION)){
+    header("Location: ../views/login.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -17,17 +21,14 @@
 <body style="background-color: #E6A756E6;">
 <?php
   if($_SESSION['role'] == "A"){
-    echo "<a href='editItem.php' class='float-right font-weight-bold m-4 btn btn-danger'>To Edit Item Page</a>";
+    include '../views/adminShopNav.php';
   }else{
-    echo "<a href='../../index.html' class='float-right font-weight-bold m-4 btn btn-danger'>To Home</a>";
+    include '../views/userShopNav.php' ;
   }
 ?>
   <div class="container w-75">
-    <div class="container text-center">
-      <h3 class="display-4">Welcome,<?= $_SESSION['username'] ?></h3>
-    </div>
-
-    <table class="table table-hover table-striped table-bordered mx-auto text-center my-5">
+  <h3 class="display-4">Tea & Coffee</h3>
+    <table class="table table-hover table-striped table-bordered mx-auto text-center mb-5">
       <thead class="text-uppercase" style="background-color: indianred;">
         <th>Item ID</th>
         <th>Picture</th>

@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +14,10 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <title>add item</title>
 </head>
+
+<?php
+include '../views/adminShopNav.php';
+?>
 <body style="background-color: #E6A756E6;">
   <div class="container">
     <div class="card mx-auto w-50 my-5 px-4 border-0">

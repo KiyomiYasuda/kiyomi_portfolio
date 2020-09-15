@@ -62,30 +62,6 @@
       }
     }
 
-    // public function confirmItemDetail($item_id){
-    //   $sql = "SELECT * FROM items
-    //           WHERE item_id = '$item_id'";
-    //   $result = $this->conn->query($sql);
-
-    //   if($result->num_rows == 1){
-    //     return $result->fetch_assoc();
-    //   }else{
-    //     return false;
-    //   }
-    // }
-
-    // public function confirmUserDetail($user_id){
-    //   $sql = "SELECT * FROM users WHERE user_id = '$user_id'";
-
-    //   $result = $this->conn->query($sql);
-
-    //   if($result->num_rows == 1){
-    //     return $result->fetch_assoc()();
-    //   }else{
-    //     return false;
-    //   }
-    // }
-
     public function createOrders($user_id, $item_id, $buy_quantity, $total_price){
       $sql = "INSERT INTO orders (user_id, item_id, buy_quantity, total_price) VALUES ('$user_id', '$item_id', '$buy_quantity', '$total_price')";
 
@@ -108,6 +84,54 @@
       }
     }
 
+    public function updateItem($item_id, $up_name, $up_price, $up_size, $up_quantity, $up_img){
+      $sql = "UPDATE items 
+      SET item_name = '$up_name', item_price  = '$up_price', item_size = '$up_size', item_quantity = '$up_quantity', item_img = '$up_img' 
+      WHERE item_id = '$item_id'";
+
+      $result = $this->conn->query($sql);
+
+      if($result){
+        header("Location: ../views/onlineShop.php");
+      }else{
+        echo "Error" .$this->conn->error;
+      }
+    }
+
+    public function getOrderList(){
+      $sql = "SELECT users.first_name, users.last_name, users.address, items.item_name, items.item_price, items.item_size, orders.buy_quantity, orders.total_price
+      FROM orders
+      INNER JOIN users
+      ON users.user_id = orders.user_id
+      INNER JOIN items
+      ON orders.item_id = items.item_id";
+
+      $result = $this->conn->query($sql);
+
+      if($result){
+        return $result;
+      }else {
+        die("Error:" . $this->conn->error);
+      }
+    }
+
+    public function getUserOrderList(){
+
+      $user_id = $_SESSION['user_id'];
+      $sql = "SELECT items.item_name, items.item_price, items.item_size, orders.buy_quantity, orders.total_price
+      FROM orders
+      INNER JOIN items
+      ON orders.item_id = items.item_id
+      WHERE orders.user_id = $user_id";
+
+      $result = $this->conn->query($sql);
+
+      if($result){
+        return $result;
+      }else {
+        die("Error:" . $this->conn->error);
+      }
+    }
   }
 
 ?>
