@@ -45,8 +45,10 @@ session_start();
 
   <?php 
     if(!empty($_SESSION)){
-  
       echo "<h3 class='text-white m-3 text-center font-italic'>Welcome, " .$_SESSION['username'] . "</h3>";
+    }
+    if($_SESSION['role'] == "A"){
+      echo "<div class='text-center'><a href='../kiyomi_portfolio/php/views/onlineShop.php' class='h5 text-white'>To Admin Online Shop Page <i class='fas fa-angle-double-right'></i></a></div>";
     }
   ?>
   <!-- Navigation -->
@@ -84,7 +86,7 @@ session_start();
           <div class="bg-faded p-5 d-flex ml-auto rounded">
             <h2 class="section-heading mb-0">
               <span class="section-heading-upper">Blended to Perfection</span>
-              <a href="../kiyomi_portfolio/php/views/onlineShop.php"><span class="section-heading-lower">Coffees &amp; Teas</span></a>
+              <a href="../kiyomi_portfolio/php/views/onlineShop.php" class="text-dark"><span class="section-heading-lower">Coffees &amp; Teas</span></a>
             </h2>
           </div>
         </div>
@@ -126,7 +128,7 @@ session_start();
           <div class="bg-faded p-5 d-flex ml-auto rounded">
             <h2 class="section-heading mb-0">
               <span class="section-heading-upper">From Around the World</span>
-              <a href="../kiyomi_portfolio/php/views/onlineShop.php"><span class="section-heading-lower">Bulk Speciality Blends</span></a>
+              <a href="../kiyomi_portfolio/php/views/onlineShop.php" class="text-dark"><span class="section-heading-lower">Bulk Speciality Blends</span></a>
             </h2>
           </div>
         </div>

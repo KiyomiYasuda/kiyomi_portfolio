@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+if(empty($_SESSION)){
+  header("Location: ../views/login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +19,14 @@
 <title>Cafe Menu</title>
 </head>
 <body style="background-color: #2d160e;">
+
+<?php
+  if($_SESSION['role'] == "A"){
+    include '../views/adminShopNav.php';
+  }else{
+    include '../views/userShopNav.php' ;
+  }
+?>
 
 <section class="page-section cta">
   <div class="container" style="background-color: #E6A756E6;">

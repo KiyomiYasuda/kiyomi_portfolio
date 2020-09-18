@@ -49,6 +49,9 @@ session_start();
   
       echo "<h3 class='text-white m-3 text-center font-italic'>Welcome, " .$_SESSION['username'] . "</h3>";
     }
+    if($_SESSION['role'] == "A"){
+      echo "<div class='text-center'><a href='../kiyomi_portfolio/php/views/onlineShop.php' class='h5 text-white'>To Admin Online Shop Page <i class='fas fa-angle-double-right'></i></a></div>";
+    }
   ?>
 
     <!-- Navigation -->
@@ -105,7 +108,7 @@ session_start();
                   Wednesday
                   <span class="ml-auto">7:00 AM to 8:00 PM</span>
                 </li>
-                <li class="list-unstyled-item list-hours-item d-flex">
+                <li class="list-unstyled-item list-hours-item d-flex ">
                   Thursday
                   <span class="ml-auto">7:00 AM to 8:00 PM</span>
                 </li>
@@ -132,6 +135,7 @@ session_start();
                 <br>
                 (317) 585-8468
               </p>
+              <a href="../kiyomi_portfolio/php/views/cafeMenu.php" class="float-right text-dark">Cafe Menu <i class="fas fa-angle-double-right"></i></a>
             </div>
           </div>
         </div>

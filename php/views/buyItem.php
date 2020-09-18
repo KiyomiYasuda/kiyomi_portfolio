@@ -62,7 +62,7 @@
           </div>
 
           <div class="form-row">
-            <input type="submit" name="btnBuy" value="BUY" class="btn btn-danger form-control my-3">
+            <input type="submit" name="btnBuy" value="ORDER" class="btn btn-danger form-control my-3">
             <!-- <a href="confirmData.php?item_id=<?php //echo $item_detail['item_id'] ?>" class="btn btn-danger form-control my-3">BUY</a>  -->
           </div>
           <div class="form-row">

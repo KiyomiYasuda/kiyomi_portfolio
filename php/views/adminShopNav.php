@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-dark navbar-expand-md py-3" style="background-color: #2d160e;">
+  <nav class="navbar navbar-dark navbar-expand-lg py-3" style="background-color: #2d160e;">
     <a class="navbar-brand text-uppercase text-expanded font-weight-bold text-white" href="../../index.php">Kiyomi Cafe</a>
       
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#adminNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
@@ -21,13 +21,16 @@
       <div class="collapse navbar-collapse" id="adminNav">
         <ul class="nav navbar-nav">
           <li class="nav-item active">
-            <a href="../views/cafeMenu.php" class="nav-link text-uppercase text-expanded text-white mx-2">Cafe Menu</a>
-          </li>
-          <li class="nav-item active">
             <a href="../views/onlineShop.php" class="nav-link text-uppercase text-expanded text-white mx-2">Online Shop</a>
           </li>
           <li class="nav-item active">
             <a href="../views/orderList.php" class="nav-link text-uppercase text-expanded text-white mx-2">Order List</a>
+          </li>
+          <li class="nav-item active">
+            <a href="../views/fixOrderList.php" class="nav-link text-uppercase text-expanded text-white mx-2">Fixed Order List</a>
+          </li>
+          <li class="nav-item active">
+            <a href="../views/userOrderList.php" class="nav-link text-uppercase text-expanded text-white mx-2">Your Order List</a>
           </li>
           <li class="nav-item active">
             <a href="../views/editItem.php" class="nav-link text-uppercase text-expanded text-white mx-2">Edit Item</a>

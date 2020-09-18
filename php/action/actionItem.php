@@ -44,7 +44,7 @@ if(isset($_POST['btnBuy'])){
 
     $result = $item->createOrders($user_id, $item_id, $buy_quantity, $total_price);
     if($result == 1){
-      header("Location: ../views/onlineShop.php");
+      header("Location: ../views/userOrderList.php");
     }
   }elseif($buy_quantity >$item_quantity){
     echo "<div class='alert alert-danger alert-dismissible fade show text-center' role='alert'>
@@ -54,8 +54,6 @@ if(isset($_POST['btnBuy'])){
     </button>
   </div>";
   }
-
-
 }
 
 if(isset($_POST['update'])){
@@ -80,11 +78,61 @@ if(isset($_POST['update'])){
   }else{
     echo "Error in uploading the picture";
   }
-
 }
 
+if(isset($_POST['cancel'])){
+    $order_id = $_POST['orderId'];
+    $item_id = $_POST['item_id'];
 
+    $item_quantity = $_POST['item_quantity'];
+    $cancelQuantity = $_POST['update_quantity'];
+    $upQuantity = $item_quantity + $cancelQuantity;
 
+    // $get_item_id = $item->getItemId($order_id);
+    // $item_id = $get_item_id['item_id'];
+      
+      $resultUpdate = $item->updateQuantity($item_id, $upQuantity);
+      if($resultUpdate == 1){
 
+        $resultCancel = $item->cancelItem($order_id);
+        if($resultCancel == 1){     
+         header("Location: ../views/userOrderList.php");
+        }else{
+          echo "Error in canceling the Item.";
+        }
+      }else{
+        echo "Error in updating the quanity.";
+      }    
+}
 
+  if(isset($_POST['finalBuy'])){
+    $payment = $_POST['payment'];
+    $fixPrice = $_POST['fixPrice'];
+
+    $result = $item->createFixedOrder($user_id, $fixPrice, $payment);
+    if($result == 1){
+      
+      // $result = $item->deleteOrder($user_id);
+      //   if($result == 1){
+          header("Location: ../views/thankyou.php");
+        // }else{
+        //   echo "Error deleting your orders.";
+        // } 
+
+    }else{
+      echo "Error getting your order.";
+    }
+  }
+
+  if(isset($_POST['shippingUpdate'])){
+    $shipping = $_POST['shipping'];
+    $fixId = $_POST['fixId'];
+
+    $result = $item->updateShipping($fixId, $shipping);
+    if($result == 1){
+      header ("Location: ../views/fixOrderList.php");
+    }else{
+      echo "Error updating shipping status of the order.";
+    }
+  }
 ?>
