@@ -100,7 +100,7 @@
     }
 
     public function getOrderList(){
-      $sql = "SELECT users.first_name, users.last_name, users.address, items.item_name, items.item_price, items.item_size, orders.buy_quantity, orders.total_price
+      $sql = "SELECT users.first_name, users.last_name, users.address, items.item_name, items.item_price, items.item_size, orders.buy_quantity, orders.total_price, orders.buy_status
       FROM orders
       INNER JOIN users
       ON users.user_id = orders.user_id
@@ -123,7 +123,7 @@
       FROM orders
       INNER JOIN items
       ON orders.item_id = items.item_id
-      WHERE orders.user_id = $user_id";
+      WHERE orders.user_id ='$user_id' AND orders.buy_status != 'PAID'";
 
       $result = $this->conn->query($sql);
 
@@ -135,7 +135,7 @@
     }
 
     public function getTotalPrice($user_id){
-      $sql = "SELECT total_price FROM orders WHERE user_id = $user_id";
+      $sql = "SELECT total_price FROM orders WHERE user_id = '$user_id' AND buy_status = 'PENDING'";
       $result = $this->conn->query($sql);
       // $price = array();
       if($result->num_rows > 0){
@@ -148,15 +148,15 @@
       }
     }
 
-    // public function cancelItem($order_id){
-    //   $sql = "DELETE FROM orders WHERE order_id = $order_id";
+    public function cancelItem($order_id){
+      $sql = "DELETE FROM orders WHERE order_id = $order_id";
 
-    //   if($this->conn->query($sql)){
-    //     return 1;
-    //   }else{
-    //     die("Error deleting your item:" . $this->conn->error);
-    //   }
-    // }
+      if($this->conn->query($sql)){
+        return 1;
+      }else{
+        die("Error deleting your item:" . $this->conn->error);
+      }
+    }
 
     public function updateQuantity($item_id, $upQuantity){
       $sql = "UPDATE items SET item_quantity = '$upQuantity' WHERE item_id = '$item_id'";
@@ -167,9 +167,9 @@
       }
     }
 
-    public function createFixedOrder($user_id, $fixPrice, $payment){
+    public function createFixedOrder($user_id, $fixPrice, $payment_method, $payment, $change){
       $user_id = $_SESSION['user_id'];
-      $sql = "INSERT INTO fix_orders (user_id, fix_price, payment) VALUES ('$user_id', '$fixPrice', '$payment')";
+      $sql = "INSERT INTO fix_orders (user_id, fix_price, payment_method, payment, payment_change) VALUES ('$user_id', '$fixPrice', '$payment_method', '$payment', '$change')";
 
       if($this->conn->query($sql)){
         return 1;
@@ -179,7 +179,7 @@
     }
 
     public function fixOrderList(){
-      $sql = "SELECT users.first_name, users.last_name, users.address, fix_orders.fix_id, fix_orders.fix_price, fix_orders.payment, fix_orders.shipping_status
+      $sql = "SELECT users.first_name, users.last_name, users.address, fix_orders.fix_id, fix_orders.fix_price, fix_orders.payment_method, fix_orders.payment, fix_orders.payment_change, fix_orders.shipping_status
       FROM fix_orders
       INNER JOIN users
       ON fix_orders.user_id = users.user_id";
@@ -188,6 +188,17 @@
         return $result;
       }else{
         return false;
+      }
+    }
+
+    public function updateBuyStatus($user_id){
+      $user_id = $_SESSION['user_id'];
+      $sql = "UPDATE orders SET buy_status = 'PAID' WHERE user_id = $user_id";
+
+      if($this->conn->query($sql)){
+        return 1;
+      }else{
+        die("Error updating the buy status:" . $this->conn->error);
       }
     }
 

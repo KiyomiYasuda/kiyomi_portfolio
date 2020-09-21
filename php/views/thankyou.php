@@ -20,7 +20,7 @@
     <br>
     <a href="../../index.php" class="float-right lead text-dark">Back to Home <i class="fas fa-angle-double-right"></i></a><br>
   </div>
-    <div class=" container text-center w-50 border px-5 py-3 bg-white mb-4">
+    <div class=" container text-center w-50 border px-5 py-3 bg-white my-4">
       <h4>Receipt</h4>
       <ul class="list-unstyled">
 
@@ -54,11 +54,8 @@
           ?>
         </span></li>
       </ul>
-      <form action="" method="post">
-        <input type="text" name="cancelItem" value="I checked receipt." class="btn btn-dark form-control my-3">
-        
-      </form>
     </div>
+  
   
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

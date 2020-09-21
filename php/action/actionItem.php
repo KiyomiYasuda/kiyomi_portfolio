@@ -35,6 +35,7 @@ if(isset($_POST['btnBuy'])){
   $buy_quantity = $_POST['buy_quantity'];
   $item_price = $_POST['item_price'];
   $user_id = $_SESSION['user_id'];
+
   $total_price = $buy_quantity * $item_price;
 
   if($buy_quantity <= $item_quantity){
@@ -106,22 +107,29 @@ if(isset($_POST['cancel'])){
 }
 
   if(isset($_POST['finalBuy'])){
+    $payment_method = $_POST['payment_method'];
     $payment = $_POST['payment'];
     $fixPrice = $_POST['fixPrice'];
-
-    $result = $item->createFixedOrder($user_id, $fixPrice, $payment);
-    if($result == 1){
-      
-      // $result = $item->deleteOrder($user_id);
-      //   if($result == 1){
-          header("Location: ../views/thankyou.php");
-        // }else{
-        //   echo "Error deleting your orders.";
-        // } 
-
+   
+    if($payment < $fixPrice){
+      echo "You cannot buy the items. You should check your payment.";
     }else{
-      echo "Error getting your order.";
+      $change = $payment-$fixPrice;
+      $result = $item->createFixedOrder($user_id, $fixPrice, $payment_method, $payment, $change);
+      if($result == 1){
+        
+        $result = $item->updateBuyStatus($user_id);
+        if($result == 1){
+          header("Location: ../views/thankyou.php");
+        }else{
+          echo "Error updating your buy status.";
+        }
+        
+      }else{
+        echo "Error getting your order.";
+      }
     }
+    
   }
 
   if(isset($_POST['shippingUpdate'])){

@@ -34,6 +34,7 @@ include '../views/adminShopNav.php';
         <th>Item Size</th>
         <th>Buy Quantity</th>
         <th>Total Price</th>
+        <th>Buy Status</th>
       </thead>
       <tbody>
         <?php
@@ -48,6 +49,7 @@ include '../views/adminShopNav.php';
           <td><?= $row['item_size'] ?></td>
           <td><?= $row['buy_quantity'] ?></td>
           <td><?= $row['total_price'] ?></td>
+          <td><?= $row['buy_status'] ?></td>
         </tr>
           <?php } ?>
       </tbody>

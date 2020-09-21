@@ -31,8 +31,9 @@
         <th>Address</th>
         <th>All Total Price</th>
         <th>Payment Method</th>
+        <th>Payment</th>
+        <th>Change</th>
         <th>Shipping Status</th>
-        <th></th>
       </thead>
       <tbody>
         <?php
@@ -43,21 +44,19 @@
           <td><?php echo $row['first_name'] . " " .$row['last_name']; ?></td>
           <td><?php echo $row['address']; ?></td>
           <td><?= $row['fix_price'] ?></td>
-          <td><?= $row['payment']  ?></td>
+          <td><?= $row['payment_method'] ?></td>
+          <td><?= $row['payment'] ?></td>
+          <td><?= $row['payment_change'] ?></td>
           <form action="../action/actionItem.php" method="POST">
             <td>
-              <label for="">Not yet</label>
-              <input type="radio" name="shipping" value="NotYet"><br>
-              <label for="">Being prepared</label>
-              <input type="radio" name="shipping" value="Preparing"><br>
-              <label for="">Delivered</label>
-              <input type="radio" name="shipping" value="Delivered">
-              <input type="hidden" name="fixId" value="<?= $row['fix_id']  ?>">
-            </td>
-            <td>
-              <input type="submit" name="shippingUpdate" value="UPDATE" class="btn btn-danger form-control">
-              <br>
-              <p class="mt-2"><?= $row['shipping_status']  ?></p>
+              <select name="shipping" id="" class="form-control">
+                <option disabled selected><?= $row['shipping_status']?></option>
+                <option value="not_yet">Not yet</s>
+                <option value="preparing">Being prepared</option>
+                <option value="delivered">Delivered</option>
+              </select>
+              <input type="submit" name="shippingUpdate" value="UPDATE" class="btn btn-danger form-control mt-3">
+              <input type="hidden" name="fixId" value="<?= $row['fix_id']?>">
             </td>
           </form> 
         </tr>

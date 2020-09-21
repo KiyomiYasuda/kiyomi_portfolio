@@ -1,7 +1,6 @@
 <?php
   include '../action/actionItem.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +25,7 @@
 
   <div class="container w-75">
     <div class="container text-center">
-      <h3 class="display-4">ORDERED LIST</h3>
+      <h3 class="display-4">ORDER LIST</h3>
     </div>
 
     <table class="table table-hover table-striped table-bordered mx-auto text-center my-5">
@@ -96,14 +95,20 @@
           <div class="form-row">
             <div class="col-6">Please select your choice of payment.</div>
             <div class="col-6">
-              <select name="payment" id="" class="form-control">
-                <option value="" disabled>Choose Payment method</option>
+              <select name="payment_method" id="" class="form-control" required>
+                <option selected disabled>Choose Payment method</option>
                 <option value="Cash">Cash</option>
                 <option value="CreditCard">Credit Card</option>
               </select>
             </div>
           </div>
-          <div class="form-rol">
+          <div class="form-row">
+            <div class="col-6 mt-2">Input your payment.</div>
+            <div class="col-6">
+              <input type="number" name="payment" value="BUY" class="form-control my-3" required>
+            </div>
+          </div>
+          <div class="form-row">
             <input type="submit" name="finalBuy" value="BUY" class="form-control btn btn-danger text-uppercase my-4">
           </div>
         </form>
@@ -120,3 +125,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
