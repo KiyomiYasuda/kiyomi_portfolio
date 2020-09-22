@@ -25,27 +25,19 @@
       <ul class="list-unstyled">
 
         <li class="d-flex lead">Name<span class="ml-auto"><?php echo $_SESSION['first_name']. " ". $_SESSION['last_name']; ?></span></li>
-        <li class="d-flex lead">Address<span class="ml-auto"><?php echo $_SESSION['address']; ?></span></li>
+        <hr>
         <?php
-          $result = $item->getUserOrderList();
+          $user_id = $_SESSION['user_id'];
+          $today = date("Y-m-d");
+          $result = $item->getReceipt($user_id, $today);
           while($row = $result->fetch_assoc()){
         ?>
-        <li class="d-flex lead"><?= $row['item_name'] ?><span class="ml-auto"><?= $row['item_price'] ?></span></li>
-        <li class="d-flex lead">Quantity<span class="ml-auto"><?= $row['buy_quantity'] ?></span></li>
-
+        <li class="d-flex lead">Total Price (Tax included)<span class="ml-auto"><?= $row['fix_price'] ?></span></li>
+        <li class="d-flex lead">Tax<span class="ml-auto"><?php echo $row['fix_price']/10 ?></span></li>
+        <li class="d-flex lead">Payment<span class="ml-auto"><?= $row['payment'] ?></span></li>
+        <li class="d-flex lead">Change<span class="ml-auto"><?= $row['payment_change'] ?></span></li>
+        <hr>
         <?php } ?>
-
-          <li class="d-flex lead">Total Price<span class="ml-auto">
-          <?php
-              $user_id = $_SESSION['user_id'];
-              $price_list = $item->getTotalPrice($user_id);
-              $sum = 0;
-              foreach($price_list as $value){
-               $sum += $value['total_price'];
-              }
-              echo $sum;
-            ?>
-          </span></li>
         
         <li class="d-flex lead">Date<span class="ml-auto">
           <?php 

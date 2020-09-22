@@ -93,7 +93,7 @@
       $result = $this->conn->query($sql);
 
       if($result){
-        header("Location: ../views/onlineShop.php");
+        header("Location: ../views/editItem.php");
       }else{
         echo "Error" .$this->conn->error;
       }
@@ -232,6 +232,34 @@
         return 1;
       }else{
         die("Error updating shipping status.:" . $this->conn->error);
+      }
+    }
+
+    public function getReceipt($user_id, $today){
+      $sql = "SELECT fix_price, payment, payment_change FROM fix_orders WHERE user_id = $user_id AND date = '$today'";
+
+      $result = $this->conn->query($sql);
+
+      if($result->num_rows > 0){
+        return $result;
+      }else{
+        return false;
+      }
+    }
+
+    public function getOrderHistory($user_id){
+      $sql = "SELECT items.item_name, items.item_price, items.item_img, items.item_size,orders.buy_quantity, orders.total_price
+      FROM orders
+      INNER JOIN items
+      ON orders.item_id = items.item_id
+      WHERE orders.user_id = '$user_id' AND orders.buy_status = 'PAID'";
+
+      $result = $this->conn->query($sql);
+
+      if($result->num_rows > 0){
+        return $result;
+      }else{
+        return false;
       }
     }
 

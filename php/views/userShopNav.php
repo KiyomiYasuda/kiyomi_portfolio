@@ -29,11 +29,13 @@
           <li class="nav-item active">
             <a href="../views/userOrderList.php" class="nav-link text-uppercase text-expanded text-white mx-2">Order List</a>
           </li>
-          
+          <li class="nav-item active">
+            <a href="../views/orderHistory.php" class="nav-link text-uppercase text-expanded text-white mx-2">Order History</a>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active text-white mx-2 my-2">User <?= $_SESSION['username'] ?></li>
+          <li class="nav-item active text-white mx-2 my-2"><i class="fas fa-user"></i> User <?= $_SESSION['username'] ?></li>
           <a href="../views/logout.php" class="text-white m-2"><i class="fas fa-sign-out-alt fa-lg"></i></a></button>
           
         </ul>

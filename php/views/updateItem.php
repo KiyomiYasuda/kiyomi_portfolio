@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <title>Update Item</title>
 </head>
-<body>
+<body  style="background-color: #E6A756E6;">
 
   <div class="container">
     <div class="card mx-auto w-50 my-5 px-4 border-0">

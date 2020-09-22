@@ -51,8 +51,7 @@
             <td>
               <select name="shipping" id="" class="form-control">
                 <option disabled selected><?= $row['shipping_status']?></option>
-                <option value="not_yet">Not yet</s>
-                <option value="preparing">Being prepared</option>
+                <option value="preparing">Preparing</option>
                 <option value="delivered">Delivered</option>
               </select>
               <input type="submit" name="shippingUpdate" value="UPDATE" class="btn btn-danger form-control mt-3">

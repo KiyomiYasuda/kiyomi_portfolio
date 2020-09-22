@@ -76,7 +76,7 @@
         <div class="form-row mb-2">
           <div class="col-6">Total price</div>
           <div class="col-6">
-        <form action="../action/actionItem.php" method="POST">
+        <form action="" method="POST">
             <?php
               $user_id = $_SESSION['user_id'];
               $price_list = $item->getTotalPrice($user_id);

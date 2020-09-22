@@ -75,7 +75,7 @@ if(isset($_POST['update'])){
   if($result == 1){
     move_uploaded_file($_FILES['up_img']['tmp_name'],$target_file);
     
-    header("Location: ../views/onlineShop.php");
+    header("Location: ../views/updateItem.php");
   }else{
     echo "Error in uploading the picture";
   }
@@ -112,7 +112,12 @@ if(isset($_POST['cancel'])){
     $fixPrice = $_POST['fixPrice'];
    
     if($payment < $fixPrice){
-      echo "You cannot buy the items. You should check your payment.";
+      echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+      <strong>You cannot buy the item.</strong> You should check your price.
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button>
+    </div>";
     }else{
       $change = $payment-$fixPrice;
       $result = $item->createFixedOrder($user_id, $fixPrice, $payment_method, $payment, $change);
