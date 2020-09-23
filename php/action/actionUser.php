@@ -43,5 +43,16 @@ if(isset($_POST['register'])){
   }
 }
 
+if(isset($_POST['btnPost'])){
+  $fullName = $_POST['fullname'];
+  $email = $_POST['email'];
+  $content = $_POST['content'];
+
+  $result = $user->Post($fullName, $email, $content);
+  if($result == 1){
+     header("Location: ../../about.php");
+  }
+}
+
 
 ?>

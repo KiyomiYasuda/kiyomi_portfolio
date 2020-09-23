@@ -32,6 +32,27 @@
         return false;
       }
     }
+
+    public function Post($fullName, $email, $content){
+      $sql = "INSERT INTO posts (full_name, email, content) VALUES ('$fullName', '$email', '$content')";
+
+      if($this->conn->query($sql)){
+        return 1;
+      }else{
+        die("Error sending your post:" . $this->conn->error);
+      }
+    }
+
+    public function getPosts(){
+      $sql = "SELECT full_name, email, content FROM posts";
+      $result = $this->conn->query($sql);
+
+      if($result->num_rows > 0){
+        return $result;        
+      }else{
+        return false;
+      }
+    }
   }
 
 ?>

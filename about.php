@@ -24,6 +24,8 @@
 
   <!-- Custom styles for this template -->
   <link href="css/business-casual.min.css" rel="stylesheet">
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
 
 </head>
 
@@ -98,6 +100,24 @@
           </div>
         </div>
       </div>
+      <div class="text-center mt-4">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26588.931642284195!2d130.384589468693!3d33.58930633646067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354191958981c361%3A0xe0edba177a7419d1!2z44Kt44Oj44OK44Or44K344OG44Kj5Y2a5aSa!5e0!3m2!1sja!2sjp!4v1600841141800!5m2!1sja!2sjp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      </div>
+      
+      <div class="text-center mt-4">
+        <div class="row">
+          <div class="col-4">
+            <a href="#" class="text-white"><i class="fab fa-instagram-square fa-4x"></i></a>
+          </div>
+          <div class="col-4">
+            <a href="#" class="text-white"><i class="fas fa-blog fa-4x"></i></a>
+          </div>
+          <div class="col-4">
+            <a href="../kiyomi_portfolio/php/views/sendMail.php" class="text-white"><i class="far fa-envelope fa-4x"></i></a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 

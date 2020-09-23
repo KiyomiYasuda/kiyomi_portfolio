@@ -39,6 +39,7 @@
         <th>Item Size</th>
         <th>Quantity</th>
         <th>Total Price</th>
+        <th></th>
       </thead>
       <tbody>
         <?php
@@ -55,6 +56,9 @@
           <td><?php echo $items_details['item_size'] ?></td>
           <td><?php echo $items_details['buy_quantity'] ?></td>
           <td><?php echo $items_details['total_price'] ?></td>
+          <th>
+            <a href="../views/sendReview.php?item_name=<?php echo $items_details['item_name'] ?>" class="btn btn-warning">Write Reveiw</a>
+          </th>
         </tr>
           <?php } ?>
       </tbody>

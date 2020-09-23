@@ -38,6 +38,9 @@
           <li class="nav-item active">
             <a href="../views/addItem.php" class="nav-link text-uppercase text-expanded text-white mx-2">Add Item</a>
           </li>
+          <li class="nav-item active">
+            <a href="../views/postList.php" class="nav-link text-uppercase text-expanded text-white mx-2">Message</a>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
