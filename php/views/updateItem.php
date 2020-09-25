@@ -45,7 +45,9 @@
           
           <div class="form-row">
             <div class="col-6 py-2">Item Size</div>
-            <div class="col-6"><input type="text" name="up_size" class="form-control" value="<?php echo $item_detail['item_size'] ?>"></div>
+            <div class="col-6">
+              <input type="text" name="up_size" class="form-control" value="<?php echo $item_detail['item_size'] ?>">
+            </div>
           </div>
           <div class="form-row">
             <div class="col-6 py-2">Item Stock</div>            

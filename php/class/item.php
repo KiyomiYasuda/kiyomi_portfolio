@@ -179,7 +179,7 @@
     }
 
     public function fixOrderList(){
-      $sql = "SELECT users.first_name, users.last_name, users.address, fix_orders.fix_id, fix_orders.fix_price, fix_orders.payment_method, fix_orders.payment, fix_orders.payment_change, fix_orders.shipping_status
+      $sql = "SELECT users.first_name, users.last_name, users.address, fix_orders.fix_id, fix_orders.fix_price, fix_orders.payment_method, fix_orders.payment, fix_orders.payment_change, fix_orders.shipping_status, fix_orders.date
       FROM fix_orders
       INNER JOIN users
       ON fix_orders.user_id = users.user_id";
@@ -260,6 +260,28 @@
         return $result;
       }else{
         return false;
+      }
+    }
+
+    public function getReview($item_name, $nickname, $comment, $date, $evaluation){
+      $sql = "INSERT INTO reviews(item_name, nickname, comment, date, evaluation) VALUES ('$item_name', '$nickname', '$comment', '$date', '$evaluation')";
+
+      if($this->conn->query($sql)){
+        return 1;
+      }else{
+        die("Error getting your review." . $this->conn->error);
+      }
+    }
+
+    public function itemReview($item_name){
+      $sql = "SELECT * FROM reviews WHERE item_name = '$item_name'";
+
+      $result = $this->conn->query($sql);
+
+      if($result->num_rows > 0){
+        return $result;
+      }else{
+        die("No reviews" . $this->conn->error);
       }
     }
 

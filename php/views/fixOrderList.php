@@ -33,6 +33,7 @@
         <th>Payment Method</th>
         <th>Payment</th>
         <th>Change</th>
+        <th>Order Date</th>
         <th>Shipping Status</th>
       </thead>
       <tbody>
@@ -47,6 +48,7 @@
           <td><?= $row['payment_method'] ?></td>
           <td><?= $row['payment'] ?></td>
           <td><?= $row['payment_change'] ?></td>
+          <td><?= $row['date'] ?></td>
           <form action="../action/actionItem.php" method="POST">
             <td>
               <select name="shipping" id="" class="form-control">

@@ -148,4 +148,19 @@ if(isset($_POST['cancel'])){
       echo "Error updating shipping status of the order.";
     }
   }
+
+  if(isset($_POST['btnReview'])){
+    $item_name = $_POST['item_name'];
+    $nickname = $_POST['nickname'];
+    $comment = $_POST['comment'];
+    $date = $_POST['date'];
+    $evaluation = $_POST['evaluation'];
+
+    $result = $item->getReview($item_name, $nickname, $comment, $date, $evaluation);
+    if($result == 1){
+      header ("Location: ../views/orderHistory.php");
+    }else{
+      echo "Error sending your review";
+    }
+  }
 ?>

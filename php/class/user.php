@@ -6,18 +6,20 @@
 
     public function createUser($first_name, $last_name, $username, $email, $address, $passw){
 
-      $sqlAccount = "INSERT INTO account (username, password) VALUES ('$username', '$passw')";
+      $sqlAccount = "INSERT INTO accounts (username, password) VALUES ('$username', '$passw')";
 
       if($this->conn->query($sqlAccount)){
         $account_id = $this->conn->insert_id;
 
-        $sqlUsers = "INSERT INTO users(first_name, last_name, email, address, account_id) VALUES ('$first_name', '$last_name', '$email', '$address', $account_id)";
+        $sqlUsers = "INSERT INTO users(first_name, last_name, email, address, account_id) VALUES ('$first_name', '$last_name', '$email', '$address', '$account_id')";
 
         if($this->conn->query($sqlUsers)){
           header("Location: ../views/login.php");
         }else{
           die("Cannot add user:".$this->conn->error);
         }
+      }else{
+        die("Cannot Register User Account".$this->conn->error);
       }
     }
 

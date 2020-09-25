@@ -52,7 +52,7 @@
           <td><?php echo $items_details['item_price'] ?></td>
           <td><?php echo $items_details['item_size'] ?></td>
           <td><?php echo $items_details['item_quantity'] ?></td>
-          <td><a href="buyItem.php?item_id=<?php echo $items_details['item_id']?>" class="btn btn-danger" role="button">BUY</a></td>
+          <td><a href="buyItem.php?item_id=<?php echo $items_details['item_id']?>" class="btn btn-danger" role="button">BUY<i class="fas fa-cart-arrow-down"></i></a></td>
         </tr>
           <?php } ?>
       </tbody>

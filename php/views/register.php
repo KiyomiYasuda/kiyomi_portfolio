@@ -1,3 +1,7 @@
+<?php
+  include '../action/actionUser.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +22,7 @@
         <h2 class="text-center">Registration</h2>
       </div>
       <div class="card-body">
-        <form action="../action/actionUser.php" method="POST">
+        <form action="" method="POST">
         
           <div class="form-row">
             <div class="form-group col-md-6 mt-3">

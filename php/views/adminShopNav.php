@@ -30,7 +30,10 @@
             <a href="../views/fixOrderList.php" class="nav-link text-uppercase text-expanded text-white mx-2">Fixed Order List</a>
           </li>
           <li class="nav-item active">
-            <a href="../views/userOrderList.php" class="nav-link text-uppercase text-expanded text-white mx-2">Your Order List</a>
+            <a href="../views/userOrderList.php" class="nav-link text-uppercase text-expanded text-white mx-2">Cart</a>
+          </li>
+          <li class="nav-item active">
+            <a href="../views/orderHistory.php" class="nav-link text-uppercase text-expanded text-white mx-2">Order History</a>
           </li>
           <li class="nav-item active">
             <a href="../views/editItem.php" class="nav-link text-uppercase text-expanded text-white mx-2">Edit Item</a>

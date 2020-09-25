@@ -17,7 +17,12 @@ if(isset($_POST['register'])){
   if($passw == $confirmPassw){
     $user->createUser($first_name, $last_name, $username, $email, $address, $passw);
   }else {
-    echo "<p class='text-danger'>Password and Confirm Password do not match.</p>";
+    echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+    <strong>Password and Confirm Password are not match!</strong> You should check them.
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>&times;</span>
+    </button>
+  </div>";
   }
 
 }elseif(isset($_POST['login'])){

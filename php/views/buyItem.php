@@ -62,7 +62,7 @@
           </div>
 
           <div class="form-row">
-            <input type="submit" name="btnBuy" value="ORDER" class="btn btn-danger form-control my-3">
+            <input type="submit" name="btnBuy" value="TO CART" class="btn btn-danger form-control my-3">
             <!-- <a href="confirmData.php?item_id=<?php //echo $item_detail['item_id'] ?>" class="btn btn-danger form-control my-3">BUY</a>  -->
           </div>
           <div class="form-row">
@@ -71,6 +71,48 @@
         </div>
       </form>
     </div>
+
+    <div class="container w-50 mb-4 overflow-auto" style="height: 300px;">
+      <table class="table table-hover table-bordered mx-auto">
+        <thead class="thead-light">
+          <th>Reviews</th>
+        </thead> 
+        <tbody>
+          <?php
+          $item_name = $item_detail['item_name'];
+          $result = $item->itemReview($item_name);
+          while($review_detail = $result->fetch_assoc()){
+          ?>
+          <tr>
+            <td class="bg-white">
+              <ul class="list-unstyled">
+                <li><?= $review_detail['nickname'] ?></li>
+                <li><?= $review_detail['comment'] ?></li>
+                <li class="float-left">
+                  Evaluation: 
+                  <?php
+                    for($val = 1; $val <= $review_detail['evaluation']; $val++){
+                      echo "<i class='fas fa-star text-warning'></i>";
+                    }
+                  ?>
+                </li>
+                <li class="float-right"><?= $review_detail['date'] ?></li>
+              </ul>
+            </td>
+          </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+        
+      
+      
+        
+       
+          
+     
+      
+    
   </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

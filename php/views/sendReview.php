@@ -1,6 +1,6 @@
 <?php
 
-  include '../action/actionUser.php';
+  include '../action/actionItem.php';
 
   $item_name = $_GET['item_name'];
 
@@ -27,17 +27,31 @@
 <body  style="background-color: #E6A756E6;">
   <div class="card w-50 mx-auto my-4">
     <div class="card-header">
-      <h3 class="display-4">Create Review</h3>
+      <h3 class="display-4">Create Review <i class="fas fa-pen"></i></h3>
     </div>
-    <form action="" method="post">
+    <form action="../action/actionItem.php" method="post">
       <div class="card-body">
         
         <h4><?php echo $item_name ?></h4>
         <input type="hidden" name="item_name" value="<?php echo $item_name ?>">
         <label for="">Nickname</label>
-        <input type="text" name="name" placeholder="Nickname" class="form-control" required>
+        <input type="text" name="nickname" placeholder="Nickname" class="form-control" required>
         <p class="mt-3">Review</p>
-        <textarea name="review" id="" cols="30" rows="10" class="form-control"></textarea>
+        <textarea name="comment" id="" cols="" rows="8" class="form-control mb-3"></textarea>
+        <label for="">Evaluation</label><br>
+        <div class="row">
+          <div class="col-2 lead"><input type="radio" name="evaluation" id="" value="1">1</div>
+          <div class="col-2 lead"><input type="radio" name="evaluation" id="" value="2">2</div>
+          <div class="col-2 lead"><input type="radio" name="evaluation" id="" value="3">3</div>
+          <div class="col-2 lead"><input type="radio" name="evaluation" id="" value="4">4</div>
+          <div class="col-2 lead"><input type="radio" name="evaluation" id="" value="5">5</div>
+        </div>
+        
+
+        <?php
+          $today = date("Y-m-d");
+        ?>
+        <input type="hidden" name="date" value="<?php echo $today ?>">
 
         <input type="submit" name="btnReview" class="form-control btn-danger my-3" value="SEND">
       </div>

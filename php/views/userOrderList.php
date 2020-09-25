@@ -25,7 +25,7 @@
 
   <div class="container w-75">
     <div class="container text-center">
-      <h3 class="display-4">ORDER LIST</h3>
+      <h3 class="display-4">CART LIST</h3>
     </div>
 
     <table class="table table-hover table-striped table-bordered mx-auto text-center my-5">
